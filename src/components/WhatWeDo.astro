@@ -1,0 +1,151 @@
+---
+// src/components/WhatWeDo.astro
+import { Picture } from "astro:assets";
+import whatWeDoImage from "../assets/images/what-we-do.jpg";
+---
+
+<section id="what-we-do" class="cs-what-we-do">
+  <div class="cs-container">
+
+    <div class="cs-text-group">
+      <div class="cs-label-row">
+        <span class="cs-topper">What we do</span>
+      </div>
+
+      <h2 class="cs-title">
+        Your job is to help people design their Space. Our job is to make yours
+        simple as <span class="cs-accent">Possible.</span>
+      </h2>
+    </div>
+
+    <div class="cs-image-wrapper">
+      <Picture
+        src={whatWeDoImage}
+        alt="Interior design workspace showing our process in action"
+        formats={["avif", "webp"]}
+        class="cs-what-we-do-image"
+      />
+    </div>
+
+  </div>
+</section>
+
+<style lang="less">
+  /*-- -------------------------- -->
+  <---        What We Do          -->
+  <--- -------------------------- -*/
+
+  /* Mobile - default */
+  #what-we-do {
+    &.cs-what-we-do {
+      background-color: #f9f9f9;
+      padding: var(--sectionPadding);
+      overflow: hidden;
+
+      .cs-container {
+        width: 92%;
+        max-width: (1280/16rem);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: (32/16rem);
+      }
+
+      /* Topper + extending line side by side */
+      .cs-label-row {
+        display: flex;
+        align-items: center;
+        gap: (12/16rem);
+        margin-bottom: (16/16rem);
+
+        &::after {
+          content: "";
+          flex: 1;
+          height: (1.5/16rem);
+          background-color: var(--headerColor);
+        }
+      }
+
+      .cs-topper {
+        color: var(--headerColor);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .cs-title {
+        font-size: clamp(1.75rem, 6.5vw, 3.5rem);
+        font-weight: 900;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        color: var(--headerColor);
+        margin: 0;
+        max-width: (700/16rem);
+      }
+
+      .cs-accent {
+        color: #e52222;
+      }
+
+      /* Full-bleed image on mobile */
+      .cs-image-wrapper {
+        width: calc(100% + (32/16rem));
+        margin-left: (-(16/16rem));
+
+        :global(.cs-what-we-do-image) {
+          display: block;
+          width: 100%;
+          height: (260/16rem);
+          object-fit: cover;
+          vertical-align: bottom;
+        }
+      }
+    }
+  }
+
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #what-we-do {
+      &.cs-what-we-do {
+        .cs-container {
+          gap: (40/16rem);
+        }
+
+        .cs-image-wrapper {
+          width: 100%;
+          margin-left: 0;
+
+          :global(.cs-what-we-do-image) {
+            height: (400/16rem);
+            border-radius: (4/16rem);
+          }
+        }
+      }
+    }
+  }
+
+  /* Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
+    #what-we-do {
+      &.cs-what-we-do {
+        .cs-container {
+          flex-direction: row;
+          align-items: center;
+          gap: (80/16rem);
+        }
+
+        .cs-text-group {
+          flex: 0 0 45%;
+        }
+
+        .cs-image-wrapper {
+          flex: 1;
+
+          :global(.cs-what-we-do-image) {
+            height: (520/16rem);
+            border-radius: (6/16rem);
+          }
+        }
+      }
+    }
+  }
+</style>

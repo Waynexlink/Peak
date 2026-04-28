@@ -1,0 +1,27 @@
+---
+import { Picture } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import landingImage from "../assets/images/landing.jpg";
+import Hero from "../components/Hero.astro";
+import WhatWeDo from "../components/WhatWeDo.astro";
+import HowWeHelp from "../components/HowWeHelp.astro";
+import OurWorks from "../components/OurWorks.astro";
+import Footer from "../components/Footer.astro"
+---
+
+<BaseLayout
+  title="Pixel Perfect Websites"
+  description="Meta description for the page"
+>
+  <Hero />
+  <WhatWeDo />
+  <HowWeHelp />
+  <OurWorks />
+  <Footer />
+</BaseLayout>
+
+<style lang="less">
+  
+
+</style>

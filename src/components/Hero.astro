@@ -1,0 +1,130 @@
+---
+// src/components/Hero.astro
+import { Picture } from "astro:assets";
+import heroHouse from "../assets/images/hero-house.jpg";
+---
+
+<section id="hero" class="cs-hero">
+  <div class="cs-container">
+    <h1 class="cs-title">
+      Position you as the obvious choice for Luxury interior design projects.
+    </h1>
+  </div>
+  <div class="cs-image-wrapper">
+    <Picture
+      src={heroHouse}
+      alt="Illustrated house representing luxury interior design projects"
+      formats={["avif", "webp"]}
+      class="cs-hero-image"
+    />
+  </div>
+</section>
+
+<style lang="less">
+  /*-- -------------------------- -->
+  <---           Hero             -->
+  <--- -------------------------- -*/
+
+  /* Mobile - 360px */
+  #hero {
+    &.cs-hero {
+      position: relative;
+      width: 100%;
+      background-color: #f6dec0;
+      /* Zero bottom padding so the image sits flush */
+      padding-bottom: 0;
+      /*
+        Top padding: accounts for a fixed header (~80px)
+        + standard mobile section padding (16px either side)
+      */
+      padding-top: (180/16rem);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .cs-container {
+        width: 100%;
+        max-width: (800/16rem);
+        margin: 0 auto;
+        /* Standard mobile side padding — 16px */
+        padding: 0 (16/16rem);
+        box-sizing: border-box;
+        text-align: center;
+        margin-bottom: (48/16rem);
+      }
+
+      .cs-title {
+        /*
+          Fluid font: scales from ~2.5rem (40px) on small phones
+          up to ~4.5rem (72px) on large screens.
+          The bigger size and heavier weight reads immediately
+          even on a small viewport.
+        */
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        font-weight: 700;
+        line-height: 1.15;
+        font-style: normal;
+        /* Tighter tracking suits heavy display weights */
+        letter-spacing: -0.03em;
+        color: #1a1a1a;
+        margin: 0;
+        padding: 0;
+      }
+
+      .cs-image-wrapper {
+        width: 100%;
+        max-width: (640/16rem);
+        margin: 0 auto;
+        display: block;
+        /* Pulls the image flush to the section bottom */
+        align-self: flex-end;
+
+        /* Target the <img> Astro outputs inside <Picture> */
+        :global(.cs-hero-image) {
+          display: block;
+          width: 100%;
+          height: auto;
+          /* Kills the default inline 4px ghost gap beneath images */
+          vertical-align: bottom;
+        }
+      }
+    }
+  }
+
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #hero {
+      &.cs-hero {
+        padding-top: (140/16rem);
+
+        .cs-container {
+          /* Bump side padding to 24px on tablet */
+          padding: 0 (24/16rem);
+          margin-bottom: (56/16rem);
+        }
+
+        .cs-image-wrapper {
+          max-width: (720/16rem);
+        }
+      }
+    }
+  }
+
+  /* Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
+    #hero {
+      &.cs-hero {
+        padding-top: (160/16rem);
+
+        .cs-container {
+          margin-bottom: (64/16rem);
+        }
+
+        .cs-image-wrapper {
+          max-width: (860/16rem);
+        }
+      }
+    }
+  }
+</style>

@@ -1,0 +1,203 @@
+---
+import { Picture } from "astro:assets";
+// Make sure this image actually exists in your folder, or change the path/name!
+import howWeHelpImage from "../assets/images/how-we-help.jpg";
+---
+
+<section id="how-we-help" class="cs-how-we-help">
+  <div class="cs-container">
+    <div class="cs-text-group">
+      <div class="cs-label-row">
+        <span class="cs-topper">What we do</span>
+      </div>
+    </div>
+    <div class="cs-content">
+      <h2 class="cs-title">
+        Attract and convert exclusive clients with a compelling digital presence
+      </h2>
+      
+      <ul class="cs-ul">
+        <li class="cs-li">
+          <svg class="cs-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span class="cs-li-text">
+            <strong>Bespoke Branding:</strong> Craft a captivating visual identity that inherently resonates with affluent audiences.
+          </span>
+        </li>
+        <li class="cs-li">
+          <svg class="cs-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span class="cs-li-text">
+            <strong>Targeted Prestige Advertising:</strong> Strategic, high-ROI campaigns designed to attract high-net-worth clientele.
+          </span>
+        </li>
+        <li class="cs-li">
+          <svg class="cs-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span class="cs-li-text">
+            <strong>Immersive Web Experiences:</strong> High-performance, pixel-perfect websites that seamlessly convert visitors into retained clients.
+          </span>
+        </li>
+      </ul>
+
+      <a href="/contact" class="cs-button-solid">Let's talk</a>
+    </div>
+
+    <!-- Image Wrapper -->
+    <Picture
+      src={howWeHelpImage}
+      alt="Luxury interior design showcasing our work"
+      formats={['avif', 'webp']}
+      pictureAttributes={{ class: "cs-picture" }}
+    />
+  </div>
+</section>
+
+<style lang="less">
+/*-- -------------------------- -->
+<---       How We Help          -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0em) {
+  .cs-how-we-help {
+    padding: var(--sectionPadding);
+    background-color: #000000;
+    /* Keeps everything clean and relative to the section */
+    position: relative;
+    overflow: hidden;
+
+    .cs-container {
+      width: 100%;
+      max-width: (1280/16rem);
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* 48px - 64px */
+      gap: clamp(3rem, 6vw, 4rem);
+    }
+
+    .cs-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .cs-title {
+      /* 32px - 48px */
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.2em;
+      font-family: "Playfair Display", serif; /* Luxury Serif Font */
+      font-weight: 400;
+      color: #ffffff;
+      /* 32px - 48px */
+      margin: 0 0 clamp(2rem, 5vw, 3rem) 0;
+      max-width: (600/16rem);
+    }
+
+    .cs-ul {
+      width: 100%;
+      margin: 0 0 (40/16rem) 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      /* 20px - 28px */
+      gap: clamp(1.25rem, 3vw, 1.75rem);
+    }
+
+    .cs-li {
+      list-style: none;
+      display: flex;
+      align-items: flex-start;
+      gap: (16/16rem);
+    }
+
+    .cs-icon {
+      /* 24px */
+      width: (24/16rem);
+      height: auto;
+      color: #ffffff;
+      /* Prevents the SVG from shrinking when text wraps */
+      flex-shrink: 0;
+      /* Pushes the icon down slightly to align with the text line-height */
+      margin-top: (2/16rem);
+    }
+
+    .cs-li-text {
+      /* 16px - 18px */
+      font-size: clamp(1rem, 2vw, 1.125rem);
+      line-height: 1.5em;
+      color: #fafbfc;
+      opacity: 0.9;
+      
+      strong {
+        font-weight: 700;
+        color: #ffffff;
+      }
+    }
+
+    .cs-button-solid {
+      /* Override the global button styles for this specific section */
+      background-color: #ffffff;
+      color: #000000;
+      margin: 0;
+
+      &:before {
+        /* The hover box pseudo-element */
+        background-color: var(--primary);
+      }
+
+      &:hover {
+        color: #000000;
+      }
+    }
+
+    .cs-picture {
+      width: 100%;
+      /* 300px - 500px */
+      height: clamp(18.75rem, 40vw, 31.25rem);
+      display: block;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+  .cs-how-we-help {
+    .cs-container {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cs-content {
+      width: 50%;
+      /* Prevents flexbox from squishing the content */
+      flex-shrink: 0;
+      /* Adds a little breathing room between the text and image */
+      padding-right: (40/16rem);
+    }
+
+    .cs-picture {
+      width: 50%;
+      /* Slightly taller on desktop */
+      height: (500/16rem);
+    }
+  }
+}
+</style>

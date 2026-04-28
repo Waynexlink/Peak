@@ -1,0 +1,353 @@
+---
+import { Picture } from "astro:assets";
+
+import footer1 from "../assets/images/portfolio/port1.jpg";
+import footer2 from "../assets/images/portfolio/port2.jpg";
+import footer3 from "../assets/images/portfolio/port3.jpg";
+---
+
+<footer id="cs-footer" class="cs-footer">
+
+  <!-- ── TOP CTA AREA ─────────────────────────────── -->
+  <div class="cs-container">
+    <div class="cs-cta-row">
+
+      <!-- Left: text + button -->
+      <div class="cs-cta-text">
+        <h2 class="cs-cta-title">
+          Everything you need to grow your Interior Design Studio.
+        </h2>
+        <a href="/contact" class="cs-button-cta">Talk to Us</a>
+      </div>
+
+      <!-- Right: CSS crossfade slideshow -->
+      <div class="cs-slideshow-wrapper">
+        <div class="cs-slideshow">
+
+          <div class="cs-slide cs-slide--1">
+            <Picture
+              src={footer1}
+              alt="Interior design project one"
+              formats={["avif", "webp"]}
+              width={640}
+              height={480}
+              pictureAttributes={{ class: "cs-slide-picture" }}
+            />
+          </div>
+
+          <div class="cs-slide cs-slide--2">
+            <Picture
+              src={footer2}
+              alt="Interior design project two"
+              formats={["avif", "webp"]}
+              width={640}
+              height={480}
+              pictureAttributes={{ class: "cs-slide-picture" }}
+            />
+          </div>
+
+          <div class="cs-slide cs-slide--3">
+            <Picture
+              src={footer3}
+              alt="Interior design project three"
+              formats={["avif", "webp"]}
+              width={640}
+              height={480}
+              pictureAttributes={{ class: "cs-slide-picture" }}
+            />
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── BOTTOM: LINE / COPYRIGHT / SOCIALS ───────── -->
+  <div class="cs-bottom">
+    <div class="cs-bottom-inner">
+
+      <p class="cs-copyright">Copyright CHASE</p>
+
+      <ul class="cs-social-list">
+
+        <!-- Instagram -->
+        <li class="cs-social-item">
+          <a href="#" class="cs-social-link" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+            </svg>
+          </a>
+        </li>
+
+        <!-- Twitter / X -->
+        <li class="cs-social-item">
+          <a href="#" class="cs-social-link" aria-label="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        </li>
+
+        <!-- Facebook -->
+        <li class="cs-social-item">
+          <a href="#" class="cs-social-link" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
+
+        <!-- Behance -->
+        <li class="cs-social-item">
+          <a href="#" class="cs-social-link" aria-label="Behance">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M7.5 11.5c1.38 0 2.5-.9 2.5-2.25S8.88 7 7.5 7H3v10h4.8c1.5 0 2.7-1.02 2.7-2.5 0-1.3-.9-2.28-3-3zm-.3 4H5.1v-2.5H7c.97 0 1.5.5 1.5 1.25S8.2 15.5 7.2 15.5zM5.1 9h1.9c.83 0 1.4.45 1.4 1.2S7.83 11.4 7 11.4H5.1V9zm9.55 1.25c-2.07 0-3.65 1.5-3.65 3.75s1.58 3.75 3.65 3.75c1.63 0 2.8-.82 3.35-2.1h-1.7c-.28.5-.9.82-1.65.82-1.03 0-1.75-.65-1.87-1.72H22v-.6c0-2.3-1.5-3.9-3.55-3.9zM13.1 14c.2-1 .87-1.5 1.75-1.5s1.52.52 1.68 1.5H13.1zM17.5 7h-4v1.2h4V7z"/>
+            </svg>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+</footer>
+
+<style lang="less">
+
+  /*-- -------------------------- -->
+  <---           Footer           -->
+  <--- -------------------------- -*/
+
+  /* Mobile - 360px */
+  @media only screen and (min-width: 0em) {
+
+    #cs-footer {
+      background-color: #000;
+      color: #fff;
+      padding-top: clamp(3rem, 9vw, 6rem);
+    }
+
+    /* ---- Shared container ---- */
+    #cs-footer .cs-container {
+      width: 90%;
+      max-width: (1280/16rem);
+      margin: 0 auto;
+    }
+
+    /* ── CTA ROW ── */
+    .cs-cta-row {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(2rem, 6vw, 3rem);
+    }
+
+    /* ── LEFT: TEXT BLOCK ── */
+    .cs-cta-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: (28/16rem);
+    }
+
+    .cs-cta-title {
+      font-size: clamp(2rem, 7vw, 3.75rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: #fff;
+      margin: 0;
+      max-width: (560/16rem);
+      /* Use title font from root.less */
+      font-family: var(--font-title);
+    }
+
+    /* ── TALK TO US BUTTON ── */
+    .cs-button-cta {
+      display: inline-block;
+      font-size: (15/16rem);
+      font-weight: 700;
+      line-height: 1;
+      padding: (16/16rem) (36/16rem);
+      background-color: #a8e5a3;
+      color: #000;
+      text-decoration: none;
+      border-radius: (4/16rem);
+      letter-spacing: 0.02em;
+      position: relative;
+      overflow: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background-color: #fff;
+        color: #000;
+      }
+    }
+
+    /* ── SLIDESHOW WRAPPER ── */
+    .cs-slideshow-wrapper {
+      width: 100%;
+      /* Fluid height: ~56vw on mobile, caps at 480px on desktop */
+      aspect-ratio: 4 / 3;
+      border-radius: (12/16rem);
+      overflow: hidden;
+    }
+
+    /* ── SLIDESHOW: position stack ── */
+    .cs-slideshow {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Each slide stacks absolutely on top of the others */
+    .cs-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+
+      /*
+        Total cycle = 3 images × 2s each = 6s
+        Each image:
+          0%  → opacity 1  (snap in at the start of its turn)
+          33% → opacity 1  (hold for its full 2s slot = 2/6 = 33%)
+          44% → opacity 0  (fast ~0.67s crossfade out)
+          100%→ opacity 0  (stay hidden for the remaining 2 slots)
+      */
+      animation: cs-fade 6s ease-in-out infinite;
+
+      &.cs-slide--1 { animation-delay: 0s;  }
+      &.cs-slide--2 { animation-delay: 2s;  }
+      &.cs-slide--3 { animation-delay: 4s;  }
+
+      .cs-slide-picture {
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+      }
+    }
+
+    /* ── BOTTOM BAR ── */
+    .cs-bottom {
+      margin-top: clamp(2.5rem, 7vw, 4.5rem);
+      border-top: 1px solid #fff;
+    }
+
+    .cs-bottom-inner {
+      width: 90%;
+      max-width: (1280/16rem);
+      margin: 0 auto;
+      padding: (24/16rem) 0 (28/16rem);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: (20/16rem);
+    }
+
+    .cs-copyright {
+      font-size: (14/16rem);
+      color: rgba(255,255,255,0.65);
+      margin: 0;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── SOCIAL LIST ── */
+    .cs-social-list {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: (20/16rem);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .cs-social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: (40/16rem);
+      height: (40/16rem);
+      color: rgba(255,255,255,0.7);
+      transition: color 0.25s ease, transform 0.25s ease;
+
+      svg {
+        width: (22/16rem);
+        height: (22/16rem);
+        display: block;
+      }
+
+      &:hover {
+        color: #a8e5a3;
+        transform: translateY((-3/16rem));
+      }
+    }
+
+  } /* end mobile */
+
+  /* Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
+
+    /* ── Split layout: text left, slideshow right ── */
+    .cs-cta-row {
+      flex-direction: row;
+      align-items: center;
+      gap: clamp(2rem, 4vw, 4rem);
+    }
+
+    .cs-cta-text {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    .cs-slideshow-wrapper {
+      flex: 1 1 auto;
+      /* Fix the height on desktop rather than relying on aspect-ratio */
+      aspect-ratio: unset;
+      height: clamp((320/16rem), 30vw, (480/16rem));
+    }
+
+    /* ── Bottom bar: copyright left, socials right ── */
+    .cs-bottom-inner {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+  }
+
+  /* ── Crossfade keyframes ────────────────────────── */
+  /*
+    The trick: each slide starts at 0 opacity (even at 0%), snaps to 1 at the
+    very first frame thanks to animation-fill-mode not being needed — the
+    first slide begins immediately while slides 2 & 3 are still in their delay
+    period (opacity: 0 from the 0% keyframe). Staggering by 2s means each one
+    gets a clean 2-second window in the spotlight.
+  */
+  @keyframes cs-fade {
+    0%        { opacity: 1; }
+    33.32%    { opacity: 1; }
+    44%       { opacity: 0; }
+    100%      { opacity: 0; }
+  }
+
+  /* Respect reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .cs-slide {
+      animation: none;
+      &.cs-slide--1 { opacity: 1; }
+      &.cs-slide--2 { opacity: 0; }
+      &.cs-slide--3 { opacity: 0; }
+    }
+  }
+
+</style>

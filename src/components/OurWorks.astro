@@ -1,0 +1,285 @@
+---
+import { Picture } from "astro:assets";
+
+import port1 from "../assets/images/portfolio/port1.jpg";
+import port2 from "../assets/images/portfolio/port2.jpg";
+import port3 from "../assets/images/portfolio/port3.jpg";
+import port4 from "../assets/images/portfolio/port4.jpg";
+
+const images = [
+  { src: port1, alt: "Portfolio project one" },
+  { src: port2, alt: "Portfolio project two" },
+  { src: port3, alt: "Portfolio project three" },
+  { src: port4, alt: "Portfolio project four" },
+];
+---
+
+<section id="our-works" class="cs-our-works">
+
+  <!-- Top text block — stays inside the container -->
+  <div class="cs-container">
+    <span class="cs-topper">Our Works</span>
+    <h2 class="cs-title">A Section of Our Projects</h2>
+  </div>
+
+  <!-- Carousel breaks out to full viewport width -->
+  <div class="cs-carousel-wrapper">
+    <div class="cs-carousel-track">
+
+      <!-- Group 1 — original set -->
+      <ul class="cs-card-group" aria-hidden="false">
+        {images.map((img) => (
+          <li class="cs-card-item">
+            <Picture
+              src={img.src}
+              alt={img.alt}
+              formats={["avif", "webp"]}
+              width={533}
+              height={300}
+              pictureAttributes={{ class: "cs-portfolio-picture" }}
+            />
+          </li>
+        ))}
+      </ul>
+
+      <!-- Group 2 — duplicate for seamless loop -->
+      <ul class="cs-card-group" aria-hidden="true">
+        {images.map((img) => (
+          <li class="cs-card-item">
+            <Picture
+              src={img.src}
+              alt=""
+              formats={["avif", "webp"]}
+              width={533}
+              height={300}
+              pictureAttributes={{ class: "cs-portfolio-picture" }}
+            />
+          </li>
+        ))}
+      </ul>
+
+    </div>
+  </div>
+
+  <!-- Bottom CTA — back inside the container -->
+  <div class="cs-container">
+    <a href="/portfolio" class="cs-button-link">
+      View Portfolio
+      <!-- Up-right arrow icon (inline SVG — no extra file needed) -->
+      <svg
+        class="cs-arrow"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 16 16"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M3 13L13 3M13 3H5M13 3V11"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+  </div>
+
+</section>
+
+<style lang="less">
+
+  /*-- -------------------------- -->
+  <---         Our Works          -->
+  <--- -------------------------- -*/
+
+  /* Mobile - 360px */
+  @media only screen and (min-width: 0em) {
+
+    #our-works {
+      background-color: #0b0710;
+      padding-top: clamp(3rem, 8vw, 5rem);
+      padding-bottom: clamp(3rem, 8vw, 5rem);
+      /* Clip overflow so the full-width carousel never causes horizontal scroll */
+      overflow: hidden;
+    }
+
+    /* ---- Shared container ---- */
+    #our-works .cs-container {
+      width: 90%;
+      max-width: (1280/16rem);
+      margin: 0 auto;
+    }
+
+    /* ---- Topper ---- */
+    .cs-topper {
+      display: block;
+      font-size: clamp(0.75rem, 2vw, 0.875rem);
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: (12/16rem);
+    }
+
+    /* ---- Section title ---- */
+    #our-works .cs-title {
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--bodyTextColorWhite);
+      margin: 0 0 clamp(2rem, 6vw, 3.5rem);
+      max-width: (580/16rem);
+    }
+
+    /* ---- Carousel wrapper: breaks out to 100vw ---- */
+    .cs-carousel-wrapper {
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      /* Clip cards to stay within the stripe */
+      overflow: hidden;
+    }
+
+    /* ---- Track: holds both duplicate groups side by side ---- */
+    .cs-carousel-track {
+      display: flex;
+      width: max-content;
+      animation: cs-marquee 28s linear infinite;
+
+      /* Pause on hover — lets users read project titles on desktop */
+      &:hover {
+        animation-play-state: paused;
+      }
+    }
+
+    /* ---- One group of images ---- */
+    .cs-card-group {
+      display: flex;
+      flex-direction: row;
+      gap: clamp(0.75rem, 2vw, 1.25rem);
+      /* No padding so the track width is exact */
+      padding: 0 clamp(0.375rem, 1vw, 0.625rem);
+      list-style: none;
+      margin: 0;
+      /* Align groups flush — no row gap between the two groups */
+      flex-shrink: 0;
+    }
+
+    /* ---- Individual card ---- */
+    .cs-card-item {
+      flex-shrink: 0;
+      /* Width scales fluidly; height is a fixed track height */
+      width: clamp((280/16rem), 45vw, (533/16rem));
+      height: clamp((158/16rem), 25vw, (300/16rem));
+      border-radius: (10/16rem);
+      overflow: hidden;
+
+      .cs-portfolio-picture {
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          /* Subtle zoom on hover for the paused state */
+          transition: transform 0.4s ease;
+        }
+      }
+
+      &:hover img {
+        transform: scale(1.04);
+      }
+    }
+
+    /* ---- View Portfolio button ---- */
+    .cs-button-link {
+      display: inline-flex;
+      align-items: center;
+      gap: (8/16rem);
+      margin-top: clamp(2rem, 6vw, 3.5rem);
+      font-size: (16/16rem);
+      font-weight: 700;
+      color: var(--bodyTextColorWhite);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: (4/16rem);
+      transition: color 0.3s ease;
+
+      /* Animated underline */
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: (2/16rem);
+        background-color: var(--primary);
+        transition: width 0.3s ease;
+      }
+
+      &:hover {
+        color: var(--primary);
+        &::after {
+          width: 100%;
+        }
+        .cs-arrow {
+          transform: translate((3/16rem), (-3/16rem));
+        }
+      }
+    }
+
+    .cs-arrow {
+      width: (18/16rem);
+      height: (18/16rem);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+  } /* end mobile */
+
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+
+    .cs-card-item {
+      /* On tablet we can show slightly larger cards */
+      width: clamp((320/16rem), 35vw, (533/16rem));
+    }
+
+  }
+
+  /* Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
+
+    .cs-carousel-track {
+      /* A touch slower on desktop — more images visible so no need to rush */
+      animation-duration: 36s;
+    }
+
+    .cs-card-item {
+      width: (533/16rem);
+      height: (300/16rem);
+    }
+
+  }
+
+  /* ---- Marquee keyframe ---- */
+  /*
+    Translates exactly -50% — which equals the width of one full .cs-card-group.
+    When the first group slides fully off-screen, the animation resets invisibly
+    because group 2 is an identical clone sitting right behind it.
+  */
+  @keyframes cs-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* Respect reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .cs-carousel-track {
+      animation: none;
+    }
+  }
+
+</style>
