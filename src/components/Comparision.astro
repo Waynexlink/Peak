@@ -1,0 +1,241 @@
+---
+// Array of comparison points. 
+// Add, edit, or remove items here and the grid will automatically update!
+const comparisons = [
+  {
+    bad: "Inexperienced & scattered",
+    good: "Dedicated team of absolute experts"
+  },
+  {
+    bad: "Slow, missed deadlines",
+    good: "Lightning-fast, precise execution"
+  },
+  {
+    bad: "Fragmented & transactional",
+    good: "Holistic, partnership-driven"
+  },
+  {
+    bad: "Poor communication & hidden fees",
+    good: "Transparent pricing, always in the loop"
+  },
+  {
+    bad: "Rigid templates",
+    good: "World-class, bespoke digital creative"
+  },
+  {
+    bad: "Generic, one-size-fits-all",
+    good: "Insights drawn from global-leading brands"
+  }
+];
+---
+
+<section id="comparison" class="cs-comparison">
+  <div class="cs-container">
+    
+    <!-- Header Row -->
+    <div class="cs-header-row">
+      <h2 class="cs-title cs-left">Other Agencies</h2>
+      <div class="cs-vs">VS</div>
+      <h2 class="cs-title cs-right">Our Agency</h2>
+    </div>
+
+    <!-- Quote Area -->
+    <div class="cs-text-wrapper">
+      <p class="cs-quote">“Excellence is not a skill, it is an attitude.”</p>
+      <p class="cs-sub-quote">We treat your business as if it were our own.</p>
+    </div>
+
+    <!-- Comparison Grid -->
+    <div class="cs-grid">
+      {comparisons.map((item) => (
+        <!-- Left Side (Bad) -->
+        <div class="cs-item cs-bad">
+          <svg class="cs-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="15" y1="9" x2="9" y2="15"></line>
+            <line x1="9" y1="9" x2="15" y2="15"></line>
+          </svg>
+          <span class="cs-item-text">{item.bad}</span>
+        </div>
+
+        <!-- Right Side (Good) -->
+        <div class="cs-item cs-good">
+          <svg class="cs-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9 12l2 2 4-4"></path>
+          </svg>
+          <span class="cs-item-text">{item.good}</span>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style lang="less">
+/*-- -------------------------- -->
+<---        Comparison          -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  .cs-comparison {
+    padding: var(--sectionPadding);
+    /* Very dark background to make the colors pop */
+    background-color: #050505;
+    color: #ffffff;
+    overflow: hidden;
+
+    .cs-container {
+      width: 100%;
+      max-width: (1000/16rem);
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── HEADER AREA ── */
+    .cs-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      /* 16px - 40px gap between text and VS badge */
+      gap: clamp(1rem, 4vw, 2.5rem);
+      margin-bottom: (32/16rem);
+    }
+
+    .cs-title {
+      font-family: var(--font-title);
+      /* 20px - 40px */
+      font-size: clamp(1.25rem, 5vw, 2.5rem);
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.1em;
+      flex: 1;
+
+      &.cs-left {
+        text-align: right;
+        /* Dims the competitor side */
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      &.cs-right {
+        text-align: left;
+        color: var(--primaryLight);
+      }
+    }
+
+    .cs-vs {
+      /* 48px - 80px */
+      width: clamp(3rem, 10vw, 5rem);
+      height: clamp(3rem, 10vw, 5rem);
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 900;
+      /* 16px - 24px */
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-family: var(--font-title);
+      /* Prevents flexbox from squishing the circle */
+      flex: none;
+    }
+
+    /* ── QUOTE AREA ── */
+    .cs-text-wrapper {
+      text-align: center;
+      /* 40px - 64px */
+      margin-bottom: clamp(2.5rem, 8vw, 4rem);
+    }
+
+    .cs-quote {
+      font-family: var(--font-title);
+      /* 20px - 32px */
+      font-size: clamp(1.25rem, 4vw, 2rem);
+      line-height: 1.3em;
+      margin: 0 0 (12/16rem) 0;
+      color: #ffffff;
+    }
+
+    .cs-sub-quote {
+      /* 16px - 20px */
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0;
+    }
+
+    /* ── COMPARISON GRID ── */
+    .cs-grid {
+      display: grid;
+      /* Forces exactly 2 columns */
+      grid-template-columns: 1fr 1fr;
+      /* 16px - 48px column gap, 24px - 32px row gap */
+      column-gap: clamp(1rem, 5vw, 3rem);
+      row-gap: clamp(1.5rem, 4vw, 2rem);
+      width: 100%;
+    }
+
+    .cs-item {
+      display: flex;
+      align-items: flex-start;
+      /* 8px - 16px */
+      gap: clamp(0.5rem, 2vw, 1rem);
+    }
+
+    .cs-item-text {
+      /* 14px - 18px */
+      font-size: clamp(0.875rem, 2vw, 1.125rem);
+      line-height: 1.4em;
+    }
+
+    .cs-icon {
+      /* 20px - 28px */
+      width: clamp(1.25rem, 3vw, 1.75rem);
+      height: auto;
+      flex: none;
+      /* Pushes the icon down slightly to align with the first line of text */
+      margin-top: (2/16rem);
+    }
+
+    /* Negative Side Styles */
+    .cs-bad {
+      color: rgba(255, 255, 255, 0.6);
+      .cs-icon {
+        color: #ff6b6b; /* Soft Red */
+      }
+    }
+
+    /* Positive Side Styles */
+    .cs-good {
+      color: #ffffff;
+      .cs-icon {
+        color: #a8e5a3; /* Matches the soft green button from your footer */
+      }
+    }
+  }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  .cs-comparison {
+    .cs-grid {
+      /* Adds a subtle dividing line between the two columns on larger screens */
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
+</style>

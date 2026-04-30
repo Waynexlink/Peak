@@ -1,151 +1,108 @@
 ---
-// src/components/WhatWeDo.astro
-import { Picture } from "astro:assets";
-import whatWeDoImage from "../assets/images/what-we-do.jpg";
 ---
 
-<section id="what-we-do" class="cs-what-we-do">
-  <div class="cs-container">
+<!-- ============================================ -->
+<!--                   Quote                      -->
+<!-- ============================================ -->
 
-    <div class="cs-text-group">
-      <div class="cs-label-row">
-        <span class="cs-topper">What we do</span>
-      </div>
-
-      <h2 class="cs-title">
-        Your job is to help people design their Space. Our job is to make yours
-        simple as <span class="cs-accent">Possible.</span>
-      </h2>
+<section id="quote-560">
+    <div class="cs-container">
+        <div class="cs-content">
+            <span class="cs-topper">WHAT WE DO</span>
+            <p class="cs-quote">
+                Your job is to deliver world-class solar installations. Ours is to make sure the right clients find you, trust you, and choose you — before they even pick up the phone.
+            </p>
+            <span class="cs-name">We Handle the Marketing. You Handle the Installations.</span>
+        </div>
     </div>
+</section>
 
-    <div class="cs-image-wrapper">
-      <Picture
-        src={whatWeDoImage}
-        alt="Interior design workspace showing our process in action"
-        formats={["avif", "webp"]}
-        class="cs-what-we-do-image"
-      />
-    </div>
-
-  </div>
 </section>
 
 <style lang="less">
-  /*-- -------------------------- -->
-  <---        What We Do          -->
-  <--- -------------------------- -*/
+/*-- -------------------------- -->
+<---           Quote            -->
+<--- -------------------------- -*/
 
-  /* Mobile - default */
-  #what-we-do {
-    &.cs-what-we-do {
-      background-color: #f9f9f9;
-      padding: var(--sectionPadding);
-      overflow: hidden;
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #quote-560 {
+        padding: var(--sectionPadding);
+        background-color: #ffffff;
+        margin-top: clamp(14rem, 20vw, 30rem);
 
-      .cs-container {
-        width: 92%;
-        max-width: (1280/16rem);
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: (32/16rem);
-      }
 
-      /* Topper + extending line side by side */
-      .cs-label-row {
-        display: flex;
-        align-items: center;
-        gap: (12/16rem);
-        margin-bottom: (16/16rem);
-
-        &::after {
-          content: "";
-          flex: 1;
-          height: (1.5/16rem);
-          background-color: var(--headerColor);
-        }
-      }
-
-      .cs-topper {
-        color: var(--headerColor);
-        white-space: nowrap;
-        flex-shrink: 0;
-      }
-
-      .cs-title {
-        font-size: clamp(1.75rem, 6.5vw, 3.5rem);
-        font-weight: 900;
-        line-height: 1.15;
-        letter-spacing: -0.02em;
-        color: var(--headerColor);
-        margin: 0;
-        max-width: (700/16rem);
-      }
-
-      .cs-accent {
-        color: #e52222;
-      }
-
-      /* Full-bleed image on mobile */
-      .cs-image-wrapper {
-        width: calc(100% + (32/16rem));
-        margin-left: (-(16/16rem));
-
-        :global(.cs-what-we-do-image) {
-          display: block;
-          width: 100%;
-          height: (260/16rem);
-          object-fit: cover;
-          vertical-align: bottom;
-        }
-      }
-    }
-  }
-
-  /* Tablet - 768px */
-  @media only screen and (min-width: 48rem) {
-    #what-we-do {
-      &.cs-what-we-do {
         .cs-container {
-          gap: (40/16rem);
+            width: 100%;
+            max-width: (1280/16rem);
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* 48px - 64px */
+            gap: clamp(3rem, 6vw, 4rem);
         }
 
-        .cs-image-wrapper {
-          width: 100%;
-          margin-left: 0;
-
-          :global(.cs-what-we-do-image) {
-            height: (400/16rem);
-            border-radius: (4/16rem);
-          }
+        .cs-content {
+            /* set text align to left if content needs to be left aligned */
+            text-align: left;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            /* centers content horizontally, set to flex-start to left align */
+            align-items: flex-start;
+            /* 16px - 20px */
+            gap: clamp(1rem, 2vw, 1.25rem);
         }
-      }
+
+        .cs-topper {
+            /* 16px - 20px */
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.2em;
+            text-transform: uppercase;
+            text-align: inherit;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+
+            margin-bottom: (4/16rem);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: (24/16rem);
+
+            &:before {
+                /* yellow line */
+                content: "";
+                width: (50/16rem);
+                height: 2px;
+                background: var(--secondary);
+                opacity: 1;
+                display: block;
+            }
+        }
+
+        .cs-quote {
+            /* 31px - 49px */
+            font-size: clamp(1.9375rem, 5.1vw, 3.0625rem);
+            line-height: 1.2em;
+            font-weight: 900;
+            margin: 0;
+
+        }
+
+        .cs-name {
+            /* 16px - 20px */
+            font-size: clamp(1rem, 1.7vw, 1.25rem);
+            line-height: 1.2em;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin: 0;
+            color: var(--secondary);
+            display: block;
+            letter-spacing: 0.01em;
+        }
     }
-  }
+}
 
-  /* Desktop - 1024px */
-  @media only screen and (min-width: 64rem) {
-    #what-we-do {
-      &.cs-what-we-do {
-        .cs-container {
-          flex-direction: row;
-          align-items: center;
-          gap: (80/16rem);
-        }
 
-        .cs-text-group {
-          flex: 0 0 45%;
-        }
-
-        .cs-image-wrapper {
-          flex: 1;
-
-          :global(.cs-what-we-do-image) {
-            height: (520/16rem);
-            border-radius: (6/16rem);
-          }
-        }
-      }
-    }
-  }
 </style>

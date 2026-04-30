@@ -168,8 +168,8 @@ const images = [
     .cs-card-item {
       flex-shrink: 0;
       /* Width scales fluidly; height is a fixed track height */
-      width: clamp((280/16rem), 45vw, (533/16rem));
-      height: clamp((158/16rem), 25vw, (300/16rem));
+      width: (533/16rem);
+      height: (300/16rem);
       border-radius: (10/16rem);
       overflow: hidden;
 
@@ -241,12 +241,7 @@ const images = [
 
   /* Tablet - 768px */
   @media only screen and (min-width: 48rem) {
-
-    .cs-card-item {
-      /* On tablet we can show slightly larger cards */
-      width: clamp((320/16rem), 35vw, (533/16rem));
-    }
-
+    /* Cards stay 533×300 — no overrides needed */
   }
 
   /* Desktop - 1024px */

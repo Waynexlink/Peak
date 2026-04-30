@@ -1,130 +1,114 @@
 ---
-// src/components/Hero.astro
 import { Picture } from "astro:assets";
 import heroHouse from "../assets/images/hero-house.jpg";
 ---
 
-<section id="hero" class="cs-hero">
-  <div class="cs-container">
-    <h1 class="cs-title">
-      Position you as the obvious choice for Luxury interior design projects.
-    </h1>
-  </div>
-  <div class="cs-image-wrapper">
+<!-- ============================================ -->
+<!--                     Hero                     -->
+<!-- ============================================ -->
+<section id="hero-1946">
+    <div class="cs-container">
+        <div class="cs-content">
+            <h2 class="cs-title">Position Yourself as the Top Choice for Solar Installation Projects</h2>
+        </div>
+    </div>
+
+    <!-- Optimized Astro Picture Component -->
     <Picture
-      src={heroHouse}
-      alt="Illustrated house representing luxury interior design projects"
-      formats={["avif", "webp"]}
-      class="cs-hero-image"
+        src={heroHouse}
+        alt="construction site"
+        formats={['avif', 'webp']}
+        pictureAttributes={{ class: "cs-picture" }}
     />
-  </div>
 </section>
 
 <style lang="less">
-  /*-- -------------------------- -->
-  <---           Hero             -->
-  <--- -------------------------- -*/
+/*-- -------------------------- -->
+<---            Hero            -->
+<--- -------------------------- -*/
 
-  /* Mobile - 360px */
-  #hero {
-    &.cs-hero {
-      position: relative;
-      width: 100%;
-      background-color: #f6dec0;
-      /* Zero bottom padding so the image sits flush */
-      padding-bottom: 0;
-      /*
-        Top padding: accounts for a fixed header (~80px)
-        + standard mobile section padding (16px either side)
-      */
-      padding-top: (180/16rem);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      .cs-container {
-        width: 100%;
-        max-width: (800/16rem);
-        margin: 0 auto;
-        /* Standard mobile side padding — 16px */
-        padding: 0 (16/16rem);
-        box-sizing: border-box;
-        text-align: center;
-        margin-bottom: (48/16rem);
-      }
-
-      .cs-title {
-        /*
-          Fluid font: scales from ~2.5rem (40px) on small phones
-          up to ~4.5rem (72px) on large screens.
-          The bigger size and heavier weight reads immediately
-          even on a small viewport.
-        */
-        font-size: clamp(2.5rem, 8vw, 4.5rem);
-        font-weight: 700;
-        line-height: 1.15;
-        font-style: normal;
-        /* Tighter tracking suits heavy display weights */
-        letter-spacing: -0.03em;
-        color: #1a1a1a;
-        margin: 0;
-        padding: 0;
-      }
-
-      .cs-image-wrapper {
-        width: 100%;
-        max-width: (640/16rem);
-        margin: 0 auto;
-        display: block;
-        /* Pulls the image flush to the section bottom */
-        align-self: flex-end;
-
-        /* Target the <img> Astro outputs inside <Picture> */
-        :global(.cs-hero-image) {
-          display: block;
-          width: 100%;
-          height: auto;
-          /* Kills the default inline 4px ghost gap beneath images */
-          vertical-align: bottom;
-        }
-      }
-    }
-  }
-
-  /* Tablet - 768px */
-  @media only screen and (min-width: 48rem) {
-    #hero {
-      &.cs-hero {
-        padding-top: (140/16rem);
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #hero-1946 {
+        padding: var(--sectionPadding);
+        /* 160px - 200px */
+        padding-top: clamp(10rem, 20vw, 12.5rem);
+        /* Remove bottom and side padding so the image touches the edges and the next section */
+        padding-bottom: 0;
+        padding-left: 0;
+        padding-right: 0;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
 
         .cs-container {
-          /* Bump side padding to 24px on tablet */
-          padding: 0 (24/16rem);
-          margin-bottom: (56/16rem);
+            width: 100%;
+            max-width: (1280/16rem);
+            margin: auto;
+            /* Re-add horizontal padding specifically for the text container */
+            padding: 0 1rem;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
-        .cs-image-wrapper {
-          max-width: (720/16rem);
+        .cs-content {
+            text-align: center;
+            width: 100%;
+            /* 40px - 52px */
+            margin-bottom: clamp(2.5rem, 5vw, 3.25rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
         }
-      }
+
+        .cs-title {
+            /* 39px - 61px */
+            font-size: clamp(2.438rem, 5vw, 3.813rem);
+            margin: 0;
+        }
+
+        .cs-picture {
+            width: 100%;
+            /* 280px - 510px */
+            height: clamp(17.5rem, 58.6vw, 31.875rem);
+            display: block;
+            position: relative;
+            overflow: hidden;
+            /* Removed border-radius and margin-bottom to make it edge-to-edge */
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
     }
-  }
+}
 
-  /* Desktop - 1024px */
-  @media only screen and (min-width: 64rem) {
-    #hero {
-      &.cs-hero {
-        padding-top: (160/16rem);
-
-        .cs-container {
-          margin-bottom: (64/16rem);
+/* Small Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #hero-1946 {
+        .cs-title {
+            max-width: (750/16rem);
         }
-
-        .cs-image-wrapper {
-          max-width: (860/16rem);
-        }
-      }
     }
-  }
+}
+
+/* Large Desktop 1300px */
+@media only screen and (min-width: 81.25rem) {
+    #hero-1946 {
+        .cs-content {
+            max-width: (1280/16rem);
+        }
+    }
+}
 </style>

@@ -6,7 +6,7 @@ import footer2 from "../assets/images/portfolio/port2.jpg";
 import footer3 from "../assets/images/portfolio/port3.jpg";
 ---
 
-<footer id="cs-footer" class="cs-footer">
+<footer id="cs-footer">
 
   <!-- ── TOP CTA AREA ─────────────────────────────── -->
   <div class="cs-container">
@@ -14,49 +14,43 @@ import footer3 from "../assets/images/portfolio/port3.jpg";
 
       <!-- Left: text + button -->
       <div class="cs-cta-text">
-        <h2 class="cs-cta-title">
-          Everything you need to grow your Interior Design Studio.
+        <h2 class="cs-title">
+         Ready to become the most recognized solar installer in your market? Let's build something that lasts.
         </h2>
-        <a href="/contact" class="cs-button-cta">Talk to Us</a>
+        <!-- Reusing the global solid button class for consistency -->
+        <a href="/contact" class="cs-button-solid">Talk to Us</a>
       </div>
 
       <!-- Right: CSS crossfade slideshow -->
       <div class="cs-slideshow-wrapper">
         <div class="cs-slideshow">
-
+          <!-- Slide 1 -->
           <div class="cs-slide cs-slide--1">
             <Picture
               src={footer1}
               alt="Interior design project one"
               formats={["avif", "webp"]}
-              width={640}
-              height={480}
               pictureAttributes={{ class: "cs-slide-picture" }}
             />
           </div>
-
+          <!-- Slide 2 -->
           <div class="cs-slide cs-slide--2">
             <Picture
               src={footer2}
               alt="Interior design project two"
               formats={["avif", "webp"]}
-              width={640}
-              height={480}
               pictureAttributes={{ class: "cs-slide-picture" }}
             />
           </div>
-
+          <!-- Slide 3 -->
           <div class="cs-slide cs-slide--3">
             <Picture
               src={footer3}
               alt="Interior design project three"
               formats={["avif", "webp"]}
-              width={640}
-              height={480}
               pictureAttributes={{ class: "cs-slide-picture" }}
             />
           </div>
-
         </div>
       </div>
 
@@ -70,7 +64,6 @@ import footer3 from "../assets/images/portfolio/port3.jpg";
       <p class="cs-copyright">Copyright CHASE</p>
 
       <ul class="cs-social-list">
-
         <!-- Instagram -->
         <li class="cs-social-item">
           <a href="#" class="cs-social-link" aria-label="Instagram">
@@ -108,31 +101,30 @@ import footer3 from "../assets/images/portfolio/port3.jpg";
             </svg>
           </a>
         </li>
-
       </ul>
+
     </div>
   </div>
-
 </footer>
 
 <style lang="less">
+/*-- -------------------------- -->
+<---           Footer           -->
+<--- -------------------------- -*/
 
-  /*-- -------------------------- -->
-  <---           Footer           -->
-  <--- -------------------------- -*/
-
-  /* Mobile - 360px */
-  @media only screen and (min-width: 0em) {
-
-    #cs-footer {
-      background-color: #000;
-      color: #fff;
-      padding-top: clamp(3rem, 9vw, 6rem);
-    }
+/* Mobile - 360px */
+@media only screen and (min-width: 0em) {
+  #cs-footer {
+    /* Using global padding to keep it perfectly aligned with other sections */
+    padding: var(--sectionPadding);
+    /* Removes the bottom padding so the line sits correctly */
+    padding-bottom: 0;
+    background-color: #000;
+    color: #fff;
 
     /* ---- Shared container ---- */
-    #cs-footer .cs-container {
-      width: 90%;
+    .cs-container {
+      width: 100%;
       max-width: (1280/16rem);
       margin: 0 auto;
     }
@@ -141,7 +133,7 @@ import footer3 from "../assets/images/portfolio/port3.jpg";
     .cs-cta-row {
       display: flex;
       flex-direction: column;
-      gap: clamp(2rem, 6vw, 3rem);
+      gap: clamp(2.5rem, 6vw, 4rem);
     }
 
     /* ── LEFT: TEXT BLOCK ── */
@@ -152,35 +144,27 @@ import footer3 from "../assets/images/portfolio/port3.jpg";
       gap: (28/16rem);
     }
 
-    .cs-cta-title {
-      font-size: clamp(2rem, 7vw, 3.75rem);
-      font-weight: 700;
-      line-height: 1.1;
+    .cs-title {
       color: #fff;
       margin: 0;
+      text-align: left;
       max-width: (560/16rem);
-      /* Use title font from root.less */
-      font-family: var(--font-title);
     }
 
-    /* ── TALK TO US BUTTON ── */
-    .cs-button-cta {
-      display: inline-block;
-      font-size: (15/16rem);
-      font-weight: 700;
-      line-height: 1;
-      padding: (16/16rem) (36/16rem);
+    /* ── OVERRIDING THE GLOBAL BUTTON ── */
+    .cs-button-solid {
       background-color: #a8e5a3;
       color: #000;
-      text-decoration: none;
+      margin: 0;
+      /* Remove border radius if you want it square, or leave it */
       border-radius: (4/16rem);
-      letter-spacing: 0.02em;
-      position: relative;
-      overflow: hidden;
-      transition: background-color 0.3s ease, color 0.3s ease;
+
+      &:before {
+        /* Makes the hover slide effect white */
+        background-color: #fff;
+      }
 
       &:hover {
-        background-color: #fff;
         color: #000;
       }
     }
@@ -188,15 +172,18 @@ import footer3 from "../assets/images/portfolio/port3.jpg";
     /* ── SLIDESHOW WRAPPER ── */
     .cs-slideshow-wrapper {
       width: 100%;
-      /* Fluid height: ~56vw on mobile, caps at 480px on desktop */
-      aspect-ratio: 4 / 3;
+      /* Fluid height on mobile */
+      height: clamp(18.75rem, 60vw, 25rem);
       border-radius: (12/16rem);
       overflow: hidden;
+      position: relative;
     }
 
     /* ── SLIDESHOW: position stack ── */
     .cs-slideshow {
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
     }
@@ -204,22 +191,17 @@ import footer3 from "../assets/images/portfolio/port3.jpg";
     /* Each slide stacks absolutely on top of the others */
     .cs-slide {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       opacity: 0;
+      /* 6 seconds total. Linear fade ensures a perfect blend */
+      animation: cs-fade 6s infinite;
 
-      /*
-        Total cycle = 3 images × 2s each = 6s
-        Each image:
-          0%  → opacity 1  (snap in at the start of its turn)
-          33% → opacity 1  (hold for its full 2s slot = 2/6 = 33%)
-          44% → opacity 0  (fast ~0.67s crossfade out)
-          100%→ opacity 0  (stay hidden for the remaining 2 slots)
-      */
-      animation: cs-fade 6s ease-in-out infinite;
-
-      &.cs-slide--1 { animation-delay: 0s;  }
-      &.cs-slide--2 { animation-delay: 2s;  }
-      &.cs-slide--3 { animation-delay: 4s;  }
+      &.cs-slide--1 { animation-delay: 0s; }
+      &.cs-slide--2 { animation-delay: 2s; }
+      &.cs-slide--3 { animation-delay: 4s; }
 
       .cs-slide-picture {
         display: block;
@@ -237,15 +219,16 @@ import footer3 from "../assets/images/portfolio/port3.jpg";
 
     /* ── BOTTOM BAR ── */
     .cs-bottom {
-      margin-top: clamp(2.5rem, 7vw, 4.5rem);
-      border-top: 1px solid #fff;
+      width: 100%;
+      margin-top: clamp(3.5rem, 8vw, 6rem);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .cs-bottom-inner {
-      width: 90%;
+      width: 100%;
       max-width: (1280/16rem);
       margin: 0 auto;
-      padding: (24/16rem) 0 (28/16rem);
+      padding: (24/16rem) 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -256,7 +239,6 @@ import footer3 from "../assets/images/portfolio/port3.jpg";
       font-size: (14/16rem);
       color: rgba(255,255,255,0.65);
       margin: 0;
-      letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
@@ -265,7 +247,7 @@ import footer3 from "../assets/images/portfolio/port3.jpg";
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: (20/16rem);
+      gap: (8/16rem);
       list-style: none;
       padding: 0;
       margin: 0;
@@ -277,67 +259,66 @@ import footer3 from "../assets/images/portfolio/port3.jpg";
       justify-content: center;
       width: (40/16rem);
       height: (40/16rem);
+      background-color: transparent;
+      border-radius: 50%;
       color: rgba(255,255,255,0.7);
-      transition: color 0.25s ease, transform 0.25s ease;
+      transition: color 0.3s ease, background-color 0.3s;
 
       svg {
-        width: (22/16rem);
-        height: (22/16rem);
+        width: (20/16rem);
+        height: auto;
         display: block;
       }
 
       &:hover {
-        color: #a8e5a3;
-        transform: translateY((-3/16rem));
+        color: #000;
+        background-color: #a8e5a3;
       }
     }
+  }
 
-  } /* end mobile */
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #cs-footer {
+      .cs-cta-row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
 
-  /* Desktop - 1024px */
-  @media only screen and (min-width: 64rem) {
+      .cs-cta-text {
+        width: 45%;
+        /* Stops flexbox from squishing the text */
+        flex: none;
+      }
 
-    /* ── Split layout: text left, slideshow right ── */
-    .cs-cta-row {
-      flex-direction: row;
-      align-items: center;
-      gap: clamp(2rem, 4vw, 4rem);
+      .cs-slideshow-wrapper {
+        width: 50%;
+        /* Fixed height on tablet/desktop */
+        height: (400/16rem);
+        flex: none;
+      }
+
+      /* ── Bottom bar: copyright left, socials right ── */
+      .cs-bottom-inner {
+        flex-direction: row;
+        justify-content: space-between;
+      }
     }
-
-    .cs-cta-text {
-      flex: 0 0 50%;
-      max-width: 50%;
-    }
-
-    .cs-slideshow-wrapper {
-      flex: 1 1 auto;
-      /* Fix the height on desktop rather than relying on aspect-ratio */
-      aspect-ratio: unset;
-      height: clamp((320/16rem), 30vw, (480/16rem));
-    }
-
-    /* ── Bottom bar: copyright left, socials right ── */
-    .cs-bottom-inner {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
-
   }
 
   /* ── Crossfade keyframes ────────────────────────── */
   /*
-    The trick: each slide starts at 0 opacity (even at 0%), snaps to 1 at the
-    very first frame thanks to animation-fill-mode not being needed — the
-    first slide begins immediately while slides 2 & 3 are still in their delay
-    period (opacity: 0 from the 0% keyframe). Staggering by 2s means each one
-    gets a clean 2-second window in the spotlight.
+     With 3 images and a 6s loop:
+     1/3 of the time (33.33%) the image is fully visible.
+     We want it to hold, then fade out smoothly.
   */
   @keyframes cs-fade {
-    0%        { opacity: 1; }
-    33.32%    { opacity: 1; }
-    44%       { opacity: 0; }
-    100%      { opacity: 0; }
+    0% { opacity: 1; }
+    25% { opacity: 1; }      /* Hold visibility for 1.5 seconds */
+    33.33% { opacity: 0; }   /* Fade out over 0.5 seconds */
+    91.66% { opacity: 0; }   /* Stay hidden while other 2 slides play */
+    100% { opacity: 1; }     /* Fade back in to perfectly loop to 0% */
   }
 
   /* Respect reduced-motion preference */
@@ -349,5 +330,5 @@ import footer3 from "../assets/images/portfolio/port3.jpg";
       &.cs-slide--3 { opacity: 0; }
     }
   }
-
+}
 </style>
